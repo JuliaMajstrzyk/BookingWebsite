@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+</head>
+<div class="wrapper_e">
+<%- include('./partials/header.ejs') %>
+<body>
+    <!-- action = where the data will be sent when form submitted. -->
+    <form class="edit_booking" action="/viewbooking/update" method="post">
+        <!-- dataList.id etc sets intial value of input field -->
+        <input type="hidden" name="id" required value="<%= dataList.id %>">
+        <br>
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" minlength="2" maxlength="30" required value="<%= dataList.fname %>">
+        <br>
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" minlength="0" maxlength="30" required value="<%= dataList.surname %>">
+        <br>
+        <label for="date">Date</label>
+        <input type="date" name="date" required value="<%= dataList.date %>">
+        <br>
+        <label for="time">Time</label>
+        <input type="time" name="time" min="09:00" max="18:00" required value="<%= dataList.time %>">
+        <br>
+        <label for="cardNumber">Card Number</label>
+        <input type="text" name="cardNumber" minlength="16" maxlength="16" required value="<%= dataList.cardNumber %>">
+        <br>
+        <label for="cardHolderName">Card Holder Name</label>
+        <input type="text" name="cardHolderName" minlength="4" maxlength="60" required value="<%= dataList.cardHolderName %>">
+        <br>
+        <label for="expirationDate">Card Expiration Date</label>
+        <input type="date" name="expirationDate" required value="<%= dataList.expirationDate %>">
+        <br>
+        <label for="cvv">CVV</label>
+        <input type="number" name="cvv" min="0" max="999" required value="<%= dataList.cvv %>">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+        <%- include('./partials/footer.ejs') %>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        document.getElementById('expirationDate').min = today;
+    });
+</script>
+
+</html>

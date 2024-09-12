@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+</head>
+<div class="container_b"></div>
+<%- include('./partials/header.ejs') %>
+<body>
+    <img src="./images/stars.png" class="stars_b">
+<div class="wrapper">
+    <form class="booking_form" action="/booking" method="post">
+        <h1>Book a class</h1>
+        <label for="fname">First Name: </label>
+        <input type="text" id="fname" name="fname" minlength="2" maxlength="30" required>
+        <br>
+        <label for="surname">Surname: </label>
+        <input type="text" id="surname" name="surname" minlength="2" maxlength="30" required>
+        <br>
+        <label for="date">Date: </label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="time">Time: </label>
+        <input type="time" name="time" min="09:00" max="18:00">
+        <br>
+        <label for="cardNumber">Card Number: </label>
+        <input type="text" id="cardNumber" name="cardNumber" minlength="16" maxlength="16" required>
+        <br>
+        <label for="cardHolderName">Card Holder Name: </label>
+        <input type="text" id="cardHolderName" name="cardHolderName" minlength="4" max="60" required>
+        <br>
+        <label for="expirationDate">Card Expiration Date: </label>
+        <input type="date" id="expirationDate" name="expirationDate" required>
+        <br>
+        <label for="cvv">CVV: </label>
+        <input type="number" id="cvv" name="cvv" min="0" max="999" required>
+        <br>
+        <input type="submit"  id="submitBooking" value="View your booking">
+    </form>
+</div>
+
+<img src="./images/rockets.png" class="rockets">
+<%- include('./partials/footer.ejs') %>
+
+<!-- DOMContentLoaded, waits for intial HTML doc to be loaded + parsed. Function then exec
+changes date object to string in ISO format (YYYY-MM-DDTHH:mm:ss.sssZ), then extracted only the date-->
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        document.getElementById('expirationDate').min = today;
+    });
+</script>
+
+</body>
+</html>

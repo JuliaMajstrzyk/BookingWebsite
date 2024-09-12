@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Booking</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+</head>
+<div class="container_v"></div>
+<%- include('./partials/header.ejs') %>
+<body>
+    <img src="./images/galaxy.png" class="galaxy">
+    <h1>Booking List</h1>
+    <div class="two_columns">
+    <% for(var i=0; i < dataList.length; i++) { %>
+        <div class="booking-item">
+            <div class="display">
+            <p><strong>Name:</strong> <%= dataList[i].fname %> <%= dataList[i].surname %></p>
+            <p><strong>Date:</strong> <%= new Date(dataList[i].date).toDateString() %></p>
+            <p><strong>Time:</strong> <%= dataList[i].time %></p> 
+                <p><strong>Card Number:</strong> <%= dataList[i].cardDetails.cardNumber %></p>
+                <p><strong>Card Holder:</strong> <%= dataList[i].cardDetails.cardHolderName %></p>
+                <p><strong>Expiration Date:</strong> <%= new Date(dataList[i].cardDetails.expirationDate).toLocaleDateString() %></p>
+                <p><strong>CVV:</strong> <%= dataList[i].cardDetails.cvv %></p>
+                
+<form action="/viewbooking/edit" method="post">
+    <input type="hidden" name="id" value="<%= dataList[i]._id %>">
+    <input type="submit" value="Update" class="editButton">
+</form>
+<br>
+<form action="/viewbooking" method="post">
+    <input type="hidden" name="id" value="<%= dataList[i]._id %>">
+    <input type="submit" value="Delete" class="deleteButton">
+</form>
+            </div>
+        </div>
+    <% } %>
+    </div>
+<%- include('./partials/footer.ejs') %>
+
+</div>
+</body>
+</html>

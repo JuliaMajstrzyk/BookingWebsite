@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+    <title>User Reports</title>
+</head>
+<body>
+    <img src="/images/saturn.png" class="saturn">
+    <img src="/images/mars.png" class="mars">
+    <%- include('./partials/header.ejs') %>
+    <form action="/reportsfound" method="post">
+        <h1>Booking Reports</h1>
+        <!-- iterate through datalist to find number of booking of specified person-->>
+        <p class="bookingFound"><%= dataList.length %> booking(s) found for <%= fname %> <%= surname %>.</p> 
+        <div class="bookingReports">
+            <!-- looping through datalist for details of user-->
+            <% dataList.forEach(data => { %>
+                <!-- Displaying it-->
+                <div class="bookingDetails">
+                    <strong>First Name:</strong> <%= data.fname %><br>
+                    <strong>Last Name:</strong> <%= data.surname %><br>
+                    <strong>Date:</strong> <%= new Date(data.date).toDateString() %><br>
+                    <strong>Time:</strong> <%= data.time %><br>
+                    <strong>Card Number:</strong> <%= data.cardDetails.cardNumber %><br>
+                    <strong>Card Holder Name:</strong> <%= data.cardDetails.cardHolderName %><br>
+                    <strong>Expiration Date:</strong> <%= new Date(data.cardDetails.expirationDate).toLocaleDateString() %><br>
+                </div>
+            <% }); %>
+        </div>
+        <!-- No booking message-->
+        <% if (dataList.length <= 0) { %>
+            <p>No bookings found for the specified user.</p>
+        <% } %>
+    </form>
+    <img src="/images/stars.png" class="stars_rf">
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

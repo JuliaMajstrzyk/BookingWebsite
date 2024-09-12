@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+</head>
+<body class="help_body">
+    <%- include('./partials/header.ejs') %>
+    <div class="container_h">
+        <div class="header">
+            <h1>Help page</h1>
+        </div>
+
+        <div class="complaint-container">
+            <label for="complaint" class="complaint-label">Enter your complaint:</label>
+            <input type="text" id="complaint" name="complaint" class="complaint-input">
+        </div>
+
+        <input type="submit" id="button" value="Submit" class="submit-button">
+
+<%- include('./partials/footer.ejs') %>
+
+</div>
+</body>
+</html>

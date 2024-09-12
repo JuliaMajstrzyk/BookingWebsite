@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script type="text/javascript" defer src="/javascripts/script_index.js"></script>
+    <%- include('./partials/header.ejs') %>
+</head>
+<body>
+    <div class="container_i">
+        <section>
+            <img src="./images/moon.png" class="moon">
+            <img src="./images/mountains.png" class="mountain">
+            <img src="./images/stars-png-640.png" class="stars">
+            <img src="./images/stars-png-640.png" class="duplicate">
+            <h2 id="header">Discover</h2>
+        </section>
+        <h3 id="classes">Current Workshops</h3>
+        <div class="workshop-container">
+            <div class="workshop_title">
+            <p id="workshop1">Star-gazing</p>
+            </div>
+            <div class="workshop_details">
+            <p id="workshopDetails">As a group we will be discover different stars and learning about the different kinds of stars in the universe.</p>
+            </div>
+        </div>
+        <div class="workshop-container">
+            <div class="workshop_title">
+            <p id="workshop2">Comet Watch</p>
+            </div>
+            <div class="workshop_details">
+            <p id="workshopDetails2">As the annual comet shower is approaching we will watch the occurrence of it and learn the history behind it.</p>
+            </div>
+        </div>        
+        <div class="button_container">
+            <a href="/booking" id="bookingButton">Book a class</a>
+        </div>
+    </body>
+<%- include('./partials/footer.ejs') %>
+    </div>
+</html>
